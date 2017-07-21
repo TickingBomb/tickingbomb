@@ -2,3 +2,4 @@
 הלהל׃ך׀×ּ«־Þ׃ן
 ytcxzhjl
 you are beautiful!
+there are no tickens;

@@ -3,10 +3,8 @@
 ytcxzhjl
 you are beautiful!
 there no tickens;
-<<<<<<< HEAD
 her eyes body;
-=======
 her body eyes
->>>>>>> featurel
 i love many money
+i love much money
 

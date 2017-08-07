@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lexian.manager.privilege.dao.CommodityCollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.lexian.manager.privilege.vo.CommodityCollection" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="commodity_no" property="commodityNo" jdbcType="VARCHAR" />
+    <result column="collecttime" property="collecttime" jdbcType="TIMESTAMP" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, commodity_no, collecttime, store_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity_collection
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commodity_collection
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityCollection" >
+    insert into commodity_collection (id, user_id, commodity_no, 
+      collecttime, store_no)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{commodityNo,jdbcType=VARCHAR}, 
+      #{collecttime,jdbcType=TIMESTAMP}, #{storeNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityCollection" >
+    insert into commodity_collection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="commodityNo != null" >
+        commodity_no,
+      </if>
+      <if test="collecttime != null" >
+        collecttime,
+      </if>
+      <if test="storeNo != null" >
+        store_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityNo != null" >
+        #{commodityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="collecttime != null" >
+        #{collecttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeNo != null" >
+        #{storeNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityCollection" >
+    update commodity_collection
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityNo != null" >
+        commodity_no = #{commodityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="collecttime != null" >
+        collecttime = #{collecttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeNo != null" >
+        store_no = #{storeNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityCollection" >
+    update commodity_collection
+    set user_id = #{userId,jdbcType=VARCHAR},
+      commodity_no = #{commodityNo,jdbcType=VARCHAR},
+      collecttime = #{collecttime,jdbcType=TIMESTAMP},
+      store_no = #{storeNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

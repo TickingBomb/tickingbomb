@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.lexian.manager.privilege.dao.OrderitemMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.lexian.manager.order.vo.Orderitem" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="commodity_no" property="commodityNo" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="listprice" property="listprice" jdbcType="DOUBLE" />
+    <result column="totalprice" property="totalprice" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, commodity_no, amount, listprice, totalprice
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderitem
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderitem
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.lexian.manager.order.vo.Orderitem" >
+    insert into orderitem (id, order_id, commodity_no, 
+      amount, listprice, totalprice
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{commodityNo,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=INTEGER}, #{listprice,jdbcType=DOUBLE}, #{totalprice,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.lexian.manager.order.vo.Orderitem" >
+    insert into orderitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="commodityNo != null" >
+        commodity_no,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="listprice != null" >
+        listprice,
+      </if>
+      <if test="totalprice != null" >
+        totalprice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityNo != null" >
+        #{commodityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="listprice != null" >
+        #{listprice,jdbcType=DOUBLE},
+      </if>
+      <if test="totalprice != null" >
+        #{totalprice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.lexian.manager.order.vo.Orderitem" >
+    update orderitem
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityNo != null" >
+        commodity_no = #{commodityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="listprice != null" >
+        listprice = #{listprice,jdbcType=DOUBLE},
+      </if>
+      <if test="totalprice != null" >
+        totalprice = #{totalprice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.lexian.manager.order.vo.Orderitem" >
+    update orderitem
+    set order_id = #{orderId,jdbcType=INTEGER},
+      commodity_no = #{commodityNo,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      listprice = #{listprice,jdbcType=DOUBLE},
+      totalprice = #{totalprice,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

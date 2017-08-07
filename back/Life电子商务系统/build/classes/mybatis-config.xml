@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- mybatis配置 -->
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+	</settings>
+	
+	<!-- 配置别名 可用别名代替配置文件中parameterType resultType -->
+	<typeAliases>
+		<typeAlias type="com.chinasofti.lexian.manager.privilege.vo.LoginVo" alias="LoginVo" />
+		<typeAlias type="com.chinasofti.lexian.manager.user.vo.User" alias="User"/>
+		<typeAlias type="com.chinasofti.lexian.manager.commodityinfo.vo.CommodityInfo" alias="CommodityInfo"/>
+		<typeAlias type="com.chinasofti.lexian.manager.category.vo.Category" alias="Category"/>
+		<typeAlias type="com.chinasofti.lexian.manager.role.vo.Role" alias="Role"/>
+		<typeAlias type="com.chinasofti.lexian.manager.statisticsCommodities.vo.Commodity" alias="Commodity" />	
+		<typeAlias type="com.chinasofti.lexian.manager.commodityinfo.vo.CommoditySpec" alias="CommoditySpec" />	
+		<typeAlias type="com.chinasofti.lexian.manager.admin.vo.Manager" alias="Manager" />	
+		<typeAlias type="com.chinasofti.lexian.manager.admin.vo.Role_Manager" alias="Role_Manager" />
+		<typeAlias type="com.chinasofti.lexian.manager.storemanagement.vo.Citys" alias="Citys" />
+		<typeAlias type="com.chinasofti.lexian.manager.storemanagement.vo.Stores" alias="Stores" />	
+	</typeAliases>
+	
+<!-- 配置的拦截器 打印sql语句，对应java的LogInterceptor --> 
+	<plugins>
+		<plugin interceptor="com.chinasofti.lexian.interceptor.PageInterceptor">
+<!--   		为LogInterceptor拦截器的setProperties传递参数  -->
+			<property name="pageCount" value="2"></property>
+		</plugin>
+	</plugins> 
+	
+</configuration>

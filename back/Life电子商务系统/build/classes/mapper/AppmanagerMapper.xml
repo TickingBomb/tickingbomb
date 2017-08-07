@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.lexian.manager.privilege.dao.AppmanagerMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.lexian.manager.privilege.vo.Appmanager" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="appname" property="appname" jdbcType="VARCHAR" />
+    <result column="versionnumber" property="versionnumber" jdbcType="VARCHAR" />
+    <result column="appurl" property="appurl" jdbcType="VARCHAR" />
+    <result column="log" property="log" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, appname, versionnumber, appurl, log, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from appmanager
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from appmanager
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.lexian.manager.privilege.vo.Appmanager" >
+    insert into appmanager (id, appname, versionnumber, 
+      appurl, log, updatetime
+      )
+    values (#{id,jdbcType=INTEGER}, #{appname,jdbcType=VARCHAR}, #{versionnumber,jdbcType=VARCHAR}, 
+      #{appurl,jdbcType=VARCHAR}, #{log,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.lexian.manager.privilege.vo.Appmanager" >
+    insert into appmanager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appname != null" >
+        appname,
+      </if>
+      <if test="versionnumber != null" >
+        versionnumber,
+      </if>
+      <if test="appurl != null" >
+        appurl,
+      </if>
+      <if test="log != null" >
+        log,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appname != null" >
+        #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="versionnumber != null" >
+        #{versionnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="appurl != null" >
+        #{appurl,jdbcType=VARCHAR},
+      </if>
+      <if test="log != null" >
+        #{log,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.lexian.manager.privilege.vo.Appmanager" >
+    update appmanager
+    <set >
+      <if test="appname != null" >
+        appname = #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="versionnumber != null" >
+        versionnumber = #{versionnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="appurl != null" >
+        appurl = #{appurl,jdbcType=VARCHAR},
+      </if>
+      <if test="log != null" >
+        log = #{log,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.lexian.manager.privilege.vo.Appmanager" >
+    update appmanager
+    set appname = #{appname,jdbcType=VARCHAR},
+      versionnumber = #{versionnumber,jdbcType=VARCHAR},
+      appurl = #{appurl,jdbcType=VARCHAR},
+      log = #{log,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

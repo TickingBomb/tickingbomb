@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lexian.manager.admin.dao.AdminDao" >
+ <sql id="Base_Column_List">
+		id,phone,username,sex,mail,portrait,passwd,lastlogintime,status
+	</sql>
+	
+	<select id="selectPagemanagerAll" resultType="Manager">
+		select
+		id,name,password,info,createtime,updatetime,status
+		from Manager
+	</select>
+	<select id="updateManagerStatus" resultType="java.lang.Integer" parameterType="Manager">
+		UPDATE MANAGER SET STATUS=#{status,jdbcType=INTEGER}
+		 WHERE id=#{id,jdbcType=INTEGER};
+	</select>
+	<select id="updateManagerPassword" resultType="java.lang.Integer" parameterType="Manager">
+		UPDATE MANAGER SET password=#{password,jdbcType=INTEGER},updatetime=#{updatetime}
+		 WHERE id=#{id,jdbcType=INTEGER};
+	</select>
+	
+	<delete id="deleteManager" parameterType="java.lang.Integer">
+		delete from Manager
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteRole_Manager" parameterType="java.lang.Integer">
+		delete from role_manager
+		where manager_id = #{manager_id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertRole"  parameterType="Manager">
+		insert into manager(id,name,password,info,createtime,updatetime,status)
+		values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{info,jdbcType=VARCHAR},#{createtime},#{updatetime},#{status,jdbcType=INTEGER})
+	
+	</insert>
+	
+	<insert id="insertRole_Manager" parameterType="Role_Manager">
+		insert into role_manager(role_id,manager_id)
+		values(#{role_id,jdbcType=INTEGER},#{manager_id,jdbcType=INTEGER})
+	</insert>
+	
+	<select id="updateInfo" resultType="java.lang.Integer" parameterType="Manager">
+		 UPDATE MANAGER SET info=#{info,jdbcType=INTEGER},updatetime=#{updatetime}
+		 WHERE name=#{name,jdbcType=VARCHAR};
+	</select>
+	<select id="selectPageselectByLike"  resultType="Manager">
+		select
+		id,name,password,info,createtime,updatetime,status
+		from manager 
+		<if test="name !='' and name != null ">
+			where name like "%"#{name}"%"
+		</if>
+	</select>
+ 
+  
+</mapper>

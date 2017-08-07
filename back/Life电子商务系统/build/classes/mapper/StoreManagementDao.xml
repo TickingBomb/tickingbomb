@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.lexian.manager.storemanagement.dao.StoreManagementDao">
+	
+	
+	<!-- 添加部门信息-->
+	<insert id="insertStore" parameterType="Stores">
+		insert into store (store_no,province_id,citys_id,county_id,storename,storeaddress,
+		maxlongitude,maxlatitude,minlongitude,minlatitude,introduce,starttime,closetime)
+		values ( #{store_no},
+				#{province_id},#{citys_id},
+				#{county_id},#{storename},
+				#{storeaddress},#{maxlongitude},
+				#{maxlatitude},#{minlongitude},
+				#{minlatitude},#{introduce},
+				#{starttime},#{closetime}
+				)
+	</insert>
+	
+	<!-- 操作 部门状态 -->
+	<update id="updateStatus" parameterType="Stores">
+		UPDATE store SET status =  #{status} WHERE store_no = #{store_no}
+	</update>
+	
+	<!-- 修改 部门信息 -->
+	<select id="modifyinfo" resultType="Stores">
+		SELECT * FROM store WHERE store_no = #{store_no}
+	</select>
+	<select id="updateCitys" resultType="Citys" parameterType="Integer">
+		select city from citys where id=#{id}
+	</select>
+	<update id="updateStore" parameterType="Stores">
+		UPDATE store SET store_no=#{store_no},
+		province_id=#{province_id},
+		citys_id=#{citys_id},
+		county_id=#{county_id},
+		storename=#{storename},
+		storeaddress=#{storeaddress},
+		maxlongitude=#{maxlongitude},
+		maxlatitude=#{maxlatitude},
+		minlongitude=#{minlongitude},
+		minlatitude=#{minlatitude},
+		introduce=#{introduce},
+		starttime=#{starttime},
+		closetime=#{closetime}
+		where store_no=#{store_no}
+	</update>
+	<!-- 添加页面 显示 省 -->
+	<select id="findcity" resultType="Citys">
+		SELECT * FROM citys 
+	</select>
+	<!-- 修改 页面 显示 市 -->
+	<select id="findstorecity" resultType="Citys"  parameterType="Stores">
+		SELECT c.* FROM citys c,store where c.id = #{province_id}
+	</select>
+	
+		<!-- 三级联动 -->		
+	<resultMap id="BaseResultMap" type="Citys" >		
+    <id column="id" property="id" jdbcType="INTEGER" />		
+    <result column="parent_id" property="parent_id" jdbcType="INTEGER" />		
+    <result column="clazz" property="clazz" jdbcType="INTEGER" />		
+    <result column="city" property="city" jdbcType="VARCHAR" />		
+ 	</resultMap>		
+	
+		<select id="searchCitys" resultMap="BaseResultMap" parameterType="Citys" >						
+	    select 						
+	    city, id, parent_id, clazz						
+	    from citys						
+	    where clazz = #{clazz,jdbcType=INTEGER}				
+	  </select>						
+							
+	  <select id="searchCitysByParentId" resultMap="BaseResultMap"						
+	  				parameterType="Citys" >		
+	    select 						
+	    city, id, parent_id, clazz			
+	    from  citys						
+	    where parent_id = #{id,jdbcType=INTEGER}						
+	  </select>	
+	
+	<!-- 模糊分页SQL语句 -->
+ 	<select id="selectUserByP" resultType="Stores" parameterType="Stores">  
+	  select  * from store 
+		 <where>
+		 	<if test="store_no !='' and store_no != null ">
+				store_no like "%"#{store_no}"%" 
+			</if>
+			<if test="storename !='' and storename != null ">
+				storename like "%"#{storename}"%" 
+			</if>
+		</where>
+	    limit #{startPos},#{pageSize}  
+	</select>
+	<!-- 分页SQL语句所有 -->
+	<select id="selectAllByP" resultType="Stores" parameterType="Stores">  
+		  select  * from store  limit #{startPos},#{pageSize}  
+		</select>
+		<!-- 取得记录的总数 -->
+	<select id="getUserCount" resultType="Integer" parameterType="Stores">  
+		  SELECT COUNT(*) FROM store 
+	</select>
+		<!-- 模糊取得记录的总数 -->
+	<select id="getUserCountLike" resultType="Integer" parameterType="Stores">  
+		  SELECT COUNT(*) FROM store 
+		<where>
+		  <if test="store_no !='' and store_no != null ">
+				store_no like "%"#{store_no}"%" 
+		  </if>
+		  <if test="storename !='' and storename != null ">
+				storename like "%"#{storename}"%" 
+		  </if>
+		</where>
+	</select>
+		
+		
+</mapper>

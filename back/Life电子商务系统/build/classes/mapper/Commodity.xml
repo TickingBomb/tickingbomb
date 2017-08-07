@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.lexian.manager.statisticsCommodities.dao.CommodityDao">	
+	
+	<select id="selectPageCommodity" resultType="Commodity" parameterType="Commodity">
+		SELECT COUNT(*) as acount,c.Commodity_no as Commodity_no,c.introduce as introduce,o.listprice as listprice 
+		FROM orderitem o,Commodity c WHERE o.Commodity_no=c.Commodity_no
+		GROUP BY c.Commodity_no ORDER BY count(*) DESC	
+	</select>		
+	<select id="selectStorename" resultType="Commodity">
+		select storename from store
+	</select>
+	<select id="selectPageCommodityByCondition" parameterType="Commodity" resultType="Commodity">
+		SELECT COUNT(*) AS acount,c.Commodity_no AS Commodity_no,c.introduce AS introduce,o.listprice AS listprice  FROM orderitem o,Commodity c WHERE o.Commodity_no=c.Commodity_no GROUP BY c.Commodity_no 
+		HAVING c.Commodity_no IN (SELECT c.Commodity_no AS Commodity_no FROM Commodity c ,orderitem o  ,Commodity_store c1  ,store s  WHERE c1.store_no=s.store_no AND c.Commodity_no=o.Commodity_no AND c.Commodity_no=c1.Commodity_no                              
+		<if test="storename != null and storename!=''">
+				and s.storename=#{storename}
+	      	</if>
+	      	<if test="starttime != null and starttime!=''">
+				and s.starttime &lt; STR_TO_DATE( #{starttime} , '%k:%i:%s')
+	      	</if>
+	      	<if test="closetime != null and closetime !=''">
+				and s.closetime &gt; STR_TO_DATE( #{closetime} , '%k:%i:%s')
+	      	</if>
+	      	<if test="selectInfo != null and selectInfo !=''">
+				and c.Commodity_no like "%"#{selectInfo}"%"
+	      	</if>
+		GROUP BY c.Commodity_no)
+		ORDER BY COUNT(*) DESC
+	</select>
+	<select id="selectPageCommodityWithPageviewByCondition" parameterType="Commodity" resultType="Commodity">
+		SELECT COUNT(*) as acount,c.Commodity_no,c.name,c.introduce 
+		FROM Commodity c,browse b 
+		WHERE c.Commodity_no=b.Commodity_no GROUP BY c.Commodity_no
+		having c.Commodity_no in(SELECT c.Commodity_no
+		FROM Commodity c ,browse b  ,Commodity_store c1  ,store s 
+		WHERE c1.store_no=s.store_no AND c.Commodity_no=b.Commodity_no AND c.Commodity_no=c1.Commodity_no
+		<if test="storename != null and storename!=''">
+				and s.storename=#{storename}
+	      	</if>
+	      	<if test="starttime != null and starttime!=''">
+				and s.starttime &lt; STR_TO_DATE( #{starttime} , '%k:%i:%s')
+	      	</if>
+	      	<if test="closetime != null and closetime !=''">
+				and s.closetime &gt; STR_TO_DATE( #{closetime} , '%k:%i:%s')
+	      	</if>
+	      	<if test="selectInfo != null and selectInfo !=''">
+				and c.Commodity_no like "%"#{selectInfo}"%"
+	      	</if>
+		GROUP BY c.Commodity_no) 
+		ORDER BY count(*) DESC
+	</select>
+	<select id="selectPageCommodityWithCommodity_no" resultType="Commodity" parameterType="Commodity">
+		SELECT COUNT(*) as acount,c.Commodity_no,c.name,c.introduce 
+		FROM Commodity c,browse b 
+		WHERE c.Commodity_no=b.Commodity_no 
+		GROUP BY c.Commodity_no ORDER BY count(*) DESC
+	</select>			
+</mapper>

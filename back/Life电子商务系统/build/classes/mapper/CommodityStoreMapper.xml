@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.lexian.manager.privilege.dao.CommodityStoreMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.lexian.manager.privilege.vo.CommodityStore" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="store_no" property="storeNo" jdbcType="VARCHAR" />
+    <result column="commodity_no" property="commodityNo" jdbcType="VARCHAR" />
+    <result column="commodity_price" property="commodityPrice" jdbcType="DECIMAL" />
+    <result column="real_price" property="realPrice" jdbcType="DECIMAL" />
+    <result column="commodity_amont" property="commodityAmont" jdbcType="INTEGER" />
+    <result column="commodity_lockamont" property="commodityLockamont" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, store_no, commodity_no, commodity_price, real_price, commodity_amont, commodity_lockamont, 
+    type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity_store
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commodity_store
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityStore" >
+    insert into commodity_store (id, store_no, commodity_no, 
+      commodity_price, real_price, commodity_amont, 
+      commodity_lockamont, type)
+    values (#{id,jdbcType=INTEGER}, #{storeNo,jdbcType=VARCHAR}, #{commodityNo,jdbcType=VARCHAR}, 
+      #{commodityPrice,jdbcType=DECIMAL}, #{realPrice,jdbcType=DECIMAL}, #{commodityAmont,jdbcType=INTEGER}, 
+      #{commodityLockamont,jdbcType=INTEGER}, #{type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityStore" >
+    insert into commodity_store
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="storeNo != null" >
+        store_no,
+      </if>
+      <if test="commodityNo != null" >
+        commodity_no,
+      </if>
+      <if test="commodityPrice != null" >
+        commodity_price,
+      </if>
+      <if test="realPrice != null" >
+        real_price,
+      </if>
+      <if test="commodityAmont != null" >
+        commodity_amont,
+      </if>
+      <if test="commodityLockamont != null" >
+        commodity_lockamont,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storeNo != null" >
+        #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityNo != null" >
+        #{commodityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityPrice != null" >
+        #{commodityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="realPrice != null" >
+        #{realPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="commodityAmont != null" >
+        #{commodityAmont,jdbcType=INTEGER},
+      </if>
+      <if test="commodityLockamont != null" >
+        #{commodityLockamont,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityStore" >
+    update commodity_store
+    <set >
+      <if test="storeNo != null" >
+        store_no = #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityNo != null" >
+        commodity_no = #{commodityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityPrice != null" >
+        commodity_price = #{commodityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="realPrice != null" >
+        real_price = #{realPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="commodityAmont != null" >
+        commodity_amont = #{commodityAmont,jdbcType=INTEGER},
+      </if>
+      <if test="commodityLockamont != null" >
+        commodity_lockamont = #{commodityLockamont,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.lexian.manager.privilege.vo.CommodityStore" >
+    update commodity_store
+    set store_no = #{storeNo,jdbcType=VARCHAR},
+      commodity_no = #{commodityNo,jdbcType=VARCHAR},
+      commodity_price = #{commodityPrice,jdbcType=DECIMAL},
+      real_price = #{realPrice,jdbcType=DECIMAL},
+      commodity_amont = #{commodityAmont,jdbcType=INTEGER},
+      commodity_lockamont = #{commodityLockamont,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

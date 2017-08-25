@@ -1,0 +1,284 @@
+* {
+margin: 0; padding:0
+}
+#container {
+text-align: left;
+width: 760px;
+height: 400px;
+}
+#container #titleFind {
+height: 28px;
+}
+#container #titleFind li {
+list-style-type: none;
+height: 28px;
+line-height: 28px;
+margin-right: 1px;
+margin-top: 20px;
+}
+
+#container #titleFind ul {
+height: 28px;
+}
+#container #titleFind a {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a span{
+display: block;
+padding: 15px 15px 0 15px;
+
+}
+#container #titleFind #tag1 a:hover {
+	font-size: 16px;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag1 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag2 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag2 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag3 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag3 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag4 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag4 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag5 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag5 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+
+#container #titleFind #tag6 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag6 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag7 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag7 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag8 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag8 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag9 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag9 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag10 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag10 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag11 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag11 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind #tag12 a:hover {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind #tag12 a:hover span{
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli1 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan1 {
+font-size: 18px;
+display: block;
+font-weight: bold;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli2 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan2 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli3 {
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan3 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli4 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan4 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli5 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan5 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli6 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan6 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli7 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan7 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli8 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan8 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli9 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan9 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli10 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan10 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli11 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan11 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #titleFind .selectli12 {
+	font-weight: bold;
+text-decoration: none;
+display: block;
+width: auto;
+}
+#container #titleFind a .selectspan12 {
+	font-weight: bold;
+display: block;
+padding: 15px 15px 0 15px;
+}
+#container #content ul {margin: 10px;}
+#container #content li {margin: 5px; }
+#container #content li img {margin: 5px;display:block;}
+#container #content {
+height: 300px;
+padding: 10px;
+}
+
+.hidecontent {display:none;}
+p{line-height: 35px;}
